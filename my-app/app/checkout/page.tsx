@@ -111,13 +111,14 @@ export default function CheckoutPage() {
       </div>
 
       {/* Two-column layout */}
-      <div
-        className="grid gap-8"
-        style={{
-          gridTemplateColumns: "minmax(0, 1fr) 380px",
-          alignItems: "start",
-        }}
-      >
+        <div
+         className="grid gap-8 checkout-grid"
+         style={{
+            gridTemplateColumns: "minmax(0, 1fr) 380px",
+            alignItems: "start",
+         }}
+         > 
+         
         {/* Left — step content */}
         <div
           style={{

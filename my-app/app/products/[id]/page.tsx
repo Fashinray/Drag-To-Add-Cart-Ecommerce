@@ -72,9 +72,10 @@ export default function ProductDetailPage({
 
       {/* Product layout */}
       <div
-        className="grid gap-12"
+        className="grid gap-6 editor-grid"
         style={{
-          gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+          gridTemplateColumns: "minmax(0, 1fr) 320px",
+          alignItems: "start",
           marginBottom: "var(--spacing-xl)",
         }}
       >

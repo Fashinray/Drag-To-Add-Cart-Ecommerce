@@ -70,7 +70,7 @@ export default function AdminOverviewPage() {
 
       {/* Chart + Activity — two column */}
       <div
-        className="grid gap-6"
+        className="grid gap-6 overflow-auto"
         style={{
           gridTemplateColumns: "minmax(0, 1fr) 340px",
           alignItems: "start",

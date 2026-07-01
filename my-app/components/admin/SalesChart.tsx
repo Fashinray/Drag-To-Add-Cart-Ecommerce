@@ -77,11 +77,12 @@ export default function SalesChart() {
       </div>
 
       {/* Chart */}
-      <ResponsiveContainer width="100%" height={240}>
-        <AreaChart
-          data={mockSalesData}
-          margin={{ top: 4, right: 4, left: 0, bottom: 0 }}
-        >
+      <div style={{ width: "100%", height: "240px", minWidth: 0 }}>
+        <ResponsiveContainer width="100%" height="100%">
+          <AreaChart
+            data={mockSalesData}
+            margin={{ top: 4, right: 4, left: 0, bottom: 0 }}
+          >
           <defs>
             <linearGradient id="currentGrad" x1="0" y1="0" x2="0" y2="1">
               <stop offset="5%"  stopColor="#2563eb" stopOpacity={0.15} />
@@ -102,21 +103,23 @@ export default function SalesChart() {
           <XAxis
             dataKey="day"
             tick={{
-              fontSize: 12,
+              fontSize: 11,
               fill: "var(--color-on-surface-variant)",
             }}
             axisLine={false}
             tickLine={false}
+            interval={0}
           />
 
           <YAxis
             tick={{
-              fontSize: 12,
+              fontSize: 11,
               fill: "var(--color-on-surface-variant)",
             }}
             axisLine={false}
             tickLine={false}
             tickFormatter={(v) => `$${(v / 1000).toFixed(0)}k`}
+            width={36}
           />
 
           <Tooltip
@@ -150,8 +153,9 @@ export default function SalesChart() {
             dot={false}
             activeDot={{ r: 4, fill: "#2563eb" }}
           />
-        </AreaChart>
-      </ResponsiveContainer>
+          </AreaChart>
+        </ResponsiveContainer>
+      </div>
     </div>
   );
 }

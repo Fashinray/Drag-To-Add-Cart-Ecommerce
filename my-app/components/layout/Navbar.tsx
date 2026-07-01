@@ -8,9 +8,9 @@ import { useCartStore } from "@/lib/store/cartStore";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
-  { label: "Catalog",     href: "/" },
-  { label: "Collections", href: "/collections" },
-  { label: "Orders",      href: "/orders" },
+  { label: "Catalog",     href: "/", active:"true"},
+  { label: "Collections", href: "/collections", active:"false" },
+  { label: "Orders",      href: "/orders", active:"false" },
 ];
 
 export default function Navbar() {
@@ -45,13 +45,31 @@ export default function Navbar() {
             letterSpacing: "-0.01em",
           }}
         >
-          WORKSPACE
+          <em>FASH-SPACE</em>
         </Link>
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
+            if (!link.active) {
+              return (
+                <span
+                  key={link.href}
+                  title="Coming soon"
+                  style={{
+                    fontSize: "var(--text-body-md)",
+                    color: "var(--color-outline-variant)",
+                    cursor: "not-allowed",
+                    paddingBottom: "4px",
+                    borderBottom: "2px solid transparent",
+                    userSelect: "none",
+                  }}
+                >
+                  {link.label}
+                </span>
+              );
+            }
             return (
               <Link
                 key={link.href}
@@ -165,6 +183,25 @@ export default function Navbar() {
         >
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
+            if (!link.active) {
+              return (
+                <span
+                  key={link.href}
+                  title="Coming soon"
+                  style={{
+                    padding: "var(--spacing-md) var(--spacing-lg)",
+                    fontSize: "var(--text-body-md)",
+                    color: "var(--color-outline-variant)",
+                    cursor: "not-allowed",
+                    borderLeft: "3px solid transparent",
+                    userSelect: "none",
+                    display: "block",
+                  }}
+                >
+                  {link.label}
+                </span>
+              );
+            }
             return (
               <Link
                 key={link.href}
