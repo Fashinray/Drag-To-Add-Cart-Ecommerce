@@ -5,6 +5,7 @@ import { useCartStore } from "@/lib/store/cartStore";
 import Button from "@/components/ui/Button";
 import Link from "next/link";
 import Image from "next/image";
+import { useDragToCart } from "@/hooks/useDragToCart";
 
 export default function CartSidebar() {
   const {
@@ -16,6 +17,13 @@ export default function CartSidebar() {
     getTotalPrice,
     getTotalItems,
   } = useCartStore();
+
+  const {
+  isDraggingOver,
+  handleDragOver,
+  handleDragLeave,
+  handleDrop,
+} = useDragToCart();
 
   const total = getTotalPrice();
   const totalItems = getTotalItems();
@@ -34,7 +42,7 @@ export default function CartSidebar() {
 
       {/* Sidebar */}
       <aside
-  className="fixed top-0 right-0 h-full z-50 flex flex-col transition-transform duration-300 cart-sidebar-mobile"
+        className="fixed top-0 right-0 h-full z-50 flex flex-col transition-transform duration-300 cart-sidebar-mobile"
         style={{
           width: "var(--spacing-sidebar-width)",
           backgroundColor: "var(--color-surface-container-low)",
@@ -42,7 +50,7 @@ export default function CartSidebar() {
           transform: isOpen ? "translateX(0)" : "translateX(100%)",
           boxShadow: isOpen ? "var(--shadow-overlay)" : "none",
         }}
-      >
+       >
         {/* Header */}
         <div
           className="flex items-center justify-between shrink-0"
